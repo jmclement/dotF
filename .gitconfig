@@ -1,0 +1,8 @@
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+[user]
+	name = Jean-Marc
+	email = clementj@intnet.mu
+	username = jmclement

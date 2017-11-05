@@ -1,0 +1,73 @@
+" vimrc config file for vi default params
+" Jean-Marc Clement - September 2013
+" Updated - 07 Aug 2014
+
+python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/
+
+syntax on
+filetype on
+set background=dark
+set t_Co=256
+color atom-dark-256
+" color railscasts
+set laststatus=2
+set statusline=%F\ %{GitBranch()}
+set relativenumber
+set number
+set showmatch
+set hlsearch
+set nobackup
+
+set visualbell
+set noerrorbells
+
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+" set autoindent
+
+set noshowmode
+set nowrap
+
+set cursorline
+
+let mapleader = ","
+
+
+map <Leader>m <esc>:tabnext<CR>
+"map <Leader>n <esc>:tabprevious<CR>
+map <Leader>n <esc>:NERDTreeToggle<CR>
+
+no <up> <Nop>
+no <down> <Nop>
+no <left> <Nop>
+no <right> <Nop>
+
+ino <up> <Nop>
+ino <down> <Nop>
+ino <left> <Nop>
+ino <right> <Nop>
+
+" let g:airline_powerline_fonts=1
+
+hi ColorColumn ctermbg=235 guibg=#2c2d27
+set colorcolumn=80
+
+set hidden
+set autoread
+set encoding=utf-8
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+so ~/dotfiles/vim/syntax/syslog.vim
+
+" Testing vim script
+function! MyInfo()
+  exec "normal i/*\<cr>|------------------------------\<cr>| Creator: Jean-Marc Clement\<cr>| Date: \<C-R>=strftime(\"%a %d %b %Y\")\<cr>\<cr>|------------------------------\<cr>*/"
+endfunction
+
+nmap ,1 :call MyInfo()<cr>
